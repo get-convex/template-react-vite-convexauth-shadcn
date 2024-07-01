@@ -8,7 +8,7 @@ import { authTables } from "@convex-dev/auth/server";
 export default defineSchema({
   ...authTables,
   messages: defineTable({
-    author: v.string(),
+    userId: v.id("users"),
     body: v.string(),
   }),
 });
