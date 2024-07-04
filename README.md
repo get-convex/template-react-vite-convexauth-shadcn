@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
+# Convex + React + Convex Auth
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a template for using [Convex](https://docs.convex.dev/) with React and [Convex Auth](https://labs.convex.dev/auth).
 
-Currently, two official plugins are available:
+## Setting up
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
+```
+npm create convex@latest -- -t react-vite-convexauth-shadcn
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Navigate to the new directory and run:
+
+```
+npm run dev
+```
+
+It'll walk you through the auth environment variables setup.
+
+## The app
+
+The app is a basic multi-user chat. Walk through of the source code:
+
+- [convex/auth.ts](./convex/auth.ts) configures the available authentication methods
+- [convex/messages.ts](./convex/messages.ts) is the chat backend implementation
+- [src/main.tsx](./src/main.tsx) is the frontend entry-point
+- [src/App.tsx](./src/App.tsx) determines which UI to show based on the authentication state
+- [src/SignInForm.tsx](./src/SignInForm.tsx) implements the sign-in UI
+- [src/Chat/Chat.tsx](./src/Chat/Chat.tsx) is the chat frontend
+
+## Configuring other authentication methods
+
+To configure different authentication methods, see [Configuration](https://labs.convex.dev/auth/config) in the Convex Auth docs.
